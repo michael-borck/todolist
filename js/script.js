@@ -18,5 +18,12 @@ function onAddTaskClicked(event) {
     todoListContainer.insertAdjacentHTML("afterbegin",taskHTML);
 }
 
+function onTodoListClicked(event) {
+    let targetElement = event.toElement;
+    console.log(targetElement);
+}
+
+
 // Step 3: Link element, function and event
-addTaskButton.addEventListener('click',onAddTaskClicked)
+addTaskButton.addEventListener('click',onAddTaskClicked);
+todoListContainer.addEventListener('click', onTodoListClicked);
