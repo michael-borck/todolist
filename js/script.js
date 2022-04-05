@@ -83,9 +83,16 @@
     }
 
     function showAllTasks(){
-        let tasks = document.getElementsByClassName("task")
+        /* let tasks = document.getElementsByClassName("task")
         for (let i =0; i < tasks.length; i++){
             tasks[i].style.display = "block"
+        }
+        */
+        for (let i=0; i < localStorage.length; i++){
+            let taskName = localStorage.key(i);
+            let isCompleted = localStorage.getItem(taskName) == "true"
+            let taskHTML = template.replace("<!-- TASK_NAME -->", taskName);
+            todoListContainer.insertAdjacentHTML('beforeend', taskHTML);
         }
     }
 
