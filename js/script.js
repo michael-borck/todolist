@@ -54,14 +54,6 @@
         /* We need to know which element triggered the click event */
         let targetElement = event.target;
     
-    
-        /* Because our list items are being dynamically inserted through JavaScript
-        instead of binding the click event handler to each task list item we've
-        bound it to their container. When the event is triggered we walk up the DOM
-        tree (using the parentElement attribute) until we find the .task element. We
-        need to do this because the user could have clicked on the checkbox or on
-        the text. Place a console.log(targetElement) after the second line if you
-        want to see this behaviour yourself (then check the developer console). */
         while (!targetElement.classList.contains("task")) {
             targetElement = targetElement.parentElement;
         }
@@ -73,6 +65,10 @@
         } else {
             targetElement.classList.remove("completed");
         }
+        let taskNameElement = targetElement.querySelector(".task-name");
+        let taskName = taskNameElement.innerHTML
+
+        saveTask(taskName, checkbox.checked);
     }
     
     function showActiveTasks(){
