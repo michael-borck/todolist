@@ -19,6 +19,11 @@
     
     /* Step 2. Lets write the function to handle the 'click' event
     ---------------------------------------------------------------*/
+    function saveTask(name,isCompleted){
+        localStorage.setItem(name, isCompleted)
+    }
+
+
     function onAddTaskClicked(event) {
         /* Now lets get what was typed in the text box on the form*/
         let taskName = newTaskInput.value;
@@ -29,6 +34,8 @@
     
         /* So the HTML has been update, lets insert the HTML into the DOM tree */
         todoListContainer.insertAdjacentHTML('beforeend', taskHTML);
+
+        saveTask(taskName, false)
     }
     
     
@@ -81,4 +88,3 @@
     todoListContainer.addEventListener('click', onTodolistClicked);
     showActiveButton.addEventListener('click', showActiveTasks);
     showAllButton.addEventListener('click', showAllTasks);
-    
