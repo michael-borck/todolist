@@ -24,7 +24,7 @@
     }
 
     function renderTasks() {
-        for (let i=0; i < localStorage.length; i++;){
+        for (let i=0; i < localStorage.length; i++){
             let taskName = localStorage.key(i);
             let isCompleted = localStorage.getItem(taskName) == "true"
             let taskHTML = template.replace("<!-- TASK_NAME -->", taskName);
