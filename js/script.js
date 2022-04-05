@@ -23,6 +23,17 @@
         localStorage.setItem(name, isCompleted)
     }
 
+    function renderTasks() {
+        for (let i=0; i < localStorage.length; i++;){
+            let taskName = localStorage.key(i);
+            let isCompleted = localStorage.getItem(taskName) == "true"
+            let taskHTML = template.replace("<!-- TASK_NAME -->", taskName);
+            
+            if  (!isCompleted){
+                todoListContainer.insertAdjacentHTML('beforeend', taskHTML);
+            }
+        }
+    }
 
     function onAddTaskClicked(event) {
         /* Now lets get what was typed in the text box on the form*/
@@ -88,3 +99,4 @@
     todoListContainer.addEventListener('click', onTodolistClicked);
     showActiveButton.addEventListener('click', showActiveTasks);
     showAllButton.addEventListener('click', showAllTasks);
+    renderTasks();
